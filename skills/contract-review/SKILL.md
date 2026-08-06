@@ -131,3 +131,16 @@ description: 国有企业合同合规审查——采购合同、销售合同、�
 - 涉及关联交易 → /related-party-review
 - 涉及国资交易 → /asset-transaction-review
 - 需要出具专项报告 → /compliance-report
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

@@ -19,6 +19,9 @@
     "./skills/trade-authenticity-check",
     "./skills/contract-review",
     "./skills/procurement-review",
+    "./skills/overseas-investment-review",
+    "./skills/data-compliance-review",
+    "./skills/labor-compliance-review",
     "./skills/official-document-writing",
     "./skills/litigation-document-writing",
     "./skills/compliance-report"

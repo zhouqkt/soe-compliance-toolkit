@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 敏感数据（禁止提交到公开仓库）
+matters/
+enterprise-profile.md
+*.local.json
+*.local.md
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Misc
+*.log
+*.tmp
+.env

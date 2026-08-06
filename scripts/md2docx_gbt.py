@@ -206,11 +206,23 @@ def convert(md_path, docx_path, style_name=DEFAULT_STYLE):
     apply_style(doc, st)
 
     i = 0
+    in_code = False
     while i < len(lines):
         line = lines[i].rstrip()
         s = line.strip()
 
         if not s or s == '---':
+            i += 1
+            continue
+
+        # 代码块（``` 包裹，等宽字体、左对齐、不缩进）
+        if s.startswith('```'):
+            in_code = not in_code
+            i += 1
+            continue
+        if in_code:
+            add_para(doc, line, st, WD_ALIGN_PARAGRAPH.LEFT, False,
+                     font='Consolas', size=max(st['body_size'] - 4, 9))
             i += 1
             continue
 

@@ -29,6 +29,9 @@
     "./skills/litigation-document-writing",
     "./skills/compliance-report",
     "./skills/compliance-matter-manager",
-    "./skills/compliance-review"
+    "./skills/compliance-review",
+    "./skills/document-parse",
+    "./skills/document-formatting",
+    "./skills/compliance-knowledge-base"
   ]
 }

@@ -140,3 +140,16 @@ description: 依据《中央企业合规管理办法》（国资委令第46号�
 - 发现重大合规风险 → /compliance-report（专项风险报告）
 - 涉及重大决策事项 → /triple-major-review
 - 涉及贸易业务 → /trade-authenticity-check
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

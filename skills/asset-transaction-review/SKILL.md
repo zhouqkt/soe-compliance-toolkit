@@ -122,3 +122,16 @@ description: 依据《企业国有资产交易监督管理办法》（国资委�
 - 涉及"三重一大"程序 → /triple-major-review
 - 涉及关联交易 → /related-party-review
 - 需要完整报告 → /compliance-report
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

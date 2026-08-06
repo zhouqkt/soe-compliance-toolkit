@@ -98,3 +98,16 @@ XXX公司
 |------|------|-------------|
 | docx 生成 | 输出正式格式报告 | 提供 Markdown 版 |
 | 公文写作 | 报告需按公文格式时 | 引导至 official-document-writing |
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

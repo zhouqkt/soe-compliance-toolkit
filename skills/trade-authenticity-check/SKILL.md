@@ -128,3 +128,16 @@ description: 国有企业贸易真实性核验——对贸易业务开展四流�
 - 发现风险 → /compliance-report（生成专项风险报告）
 - 需审查相关合同条款 → /contract-review
 - 需整改建议 → /compliance-report + /official-document-writing（整改方案）
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

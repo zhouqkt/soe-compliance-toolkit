@@ -72,6 +72,19 @@
 4. **敏感数据保护**：审查材料仅用于当次分析，不跨案件泄露；涉密材料提示线下处理
 5. **平台无关**：技能通过能力槽调用外部服务（法律检索、工商信息等），未接入时自动降级并标注
 
+## 统一排版输出
+
+所有技能产出的正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成，保证格式固定一致：
+
+| 文档类型 | 样式 | 命令 |
+|---------|------|------|
+| 公文 / 审查意见 / 核查意见 / 报告 | GB/T 9704-2012 公文格式 | `python3 scripts/md2docx_gbt.py in.md out.docx --type gongwen` |
+| 诉讼文书 | 最高法诉讼文书样式 | `python3 scripts/md2docx_gbt.py in.md out.docx --type court` |
+
+依赖：`pip install python-docx`
+
+工作流：技能产出 Markdown → 用户确认 → 一键转 Word，全程格式统一。
+
 ## 许可
 
 [MIT License](./LICENSE)

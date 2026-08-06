@@ -8,6 +8,7 @@ __pycache__/
 
 # 敏感数据（禁止提交到公开仓库）
 matters/
+knowledge-base/
 enterprise-profile.md
 *.local.json
 *.local.md

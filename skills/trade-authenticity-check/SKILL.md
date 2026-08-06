@@ -130,6 +130,10 @@ description: 国有企业贸易真实性核验——对贸易业务开展四流�
 - 需整改建议 → /compliance-report + /official-document-writing（整改方案）
 
 
+## 输出前闸门（强制）
+
+正式文件（审查意见书、核查意见、体检报告、制度文本、报告等）交付前，须过 /legal-verification 法规核验闸门（详见 Expert.md），核验全部法规、条文、监管文件引用；未核验的引用标注 `[L4-法规待核验]`，不得静默放行。
+
 ## Word 输出规范（统一）
 
 所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：

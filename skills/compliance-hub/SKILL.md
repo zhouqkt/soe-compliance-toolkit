@@ -8,10 +8,20 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
 
 国有企业法务合规工具箱的入口技能。识别用户需求，路由到对应专项技能，并对合规管理体系建设提供体检框架。
 
+## 前置（工作台机制）
+
+1. **读取企业画像** `enterprise-profile.md`（不存在 → 提示运行 /enterprise-onboarding 完成配置）
+2. **共享护栏** 见 `Expert.md`（四级溯源、通用铁律、能力槽协议、标准管线）
+3. **法规核验闸门** 正式文件输出前必须过 /legal-verification（详见 Expert.md）
+4. **排版输出** 转 Word 统一用 `scripts/md2docx_gbt.py`，参数源 `format-spec.md`
+
 ## 技能全景
 
 | 板块 | 技能 | 一句话说明 |
 |------|------|-----------|
+| **配置** | /enterprise-onboarding | 企业画像冷启动访谈（写入 enterprise-profile.md） |
+| **配置** | /customize | 单项修改配置（画像/排版参数） |
+| **质控** | /legal-verification | 正式文件输出前法规核验闸门 |
 | 合规体系 | /rule-46-review | 依据国资委令第46号开展合规管理体系符合性审查 |
 | 决策合规 | /triple-major-review | "三重一大"事项识别与决策程序审查 |
 | 国资交易 | /asset-transaction-review | 依据国资委令第32号审查国有资产交易 |
@@ -43,6 +53,9 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
    - 请示 / 报告 / 函 / 会议纪要 / 公文 → /official-document-writing
    - 起诉状 / 答辩状 / 诉讼文书 → /litigation-document-writing
    - 风险报告 / 检查报告 / 整改报告 → /compliance-report
+   - 配置 / 重新配置 / 初始化 / 企业画像 → /enterprise-onboarding
+   - 修改配置 / 改参数 / 改排版 → /customize
+   - 核验法规 / 核验引用 / 核验法条 → /legal-verification
 3. 需求不明确 → 询问企业性质（央企/地方国企/金融国企）、所属层级、业务板块、审查对象
 
 ## 合规管理体检清单（46号令视角）
@@ -97,6 +110,10 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
 - 审查类输出：审查意见书（审查事项 → 审查依据 → 风险点 → 结论建议）
 - 所有输出标注"辅助审查意见，最终以合规管理部门和专业法律意见为准"
 
+
+## 输出前闸门（强制）
+
+正式文件（审查意见书、核查意见、体检报告、制度文本、报告等）交付前，须过 /legal-verification 法规核验闸门（详见 Expert.md），核验全部法规、条文、监管文件引用；未核验的引用标注 `[L4-法规待核验]`，不得静默放行。
 
 ## Word 输出规范（统一）
 

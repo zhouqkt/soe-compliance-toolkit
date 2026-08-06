@@ -28,6 +28,7 @@ Markdown → Word (.docx)，支持两种固定格式：
     普通段落           → 正文段落（首行缩进2字符）
 """
 import sys
+import os
 import re
 from docx import Document
 from docx.shared import Pt, Cm
@@ -42,26 +43,96 @@ F_KAI = 'KaiTi_GB2312'             # 楷体
 F_FANG = 'FangSong_GB2312'         # 仿宋
 F_SONG = 'SimSun'                  # 宋体
 
-# ---------- 样式定义 ----------
+# ---------- 样式定义（内置默认值，format-spec.md 可覆盖） ----------
 STYLES = {
     # 公文：GB/T 9704-2012
     'gongwen': {
         'title_font': F_TITLE, 'title_size': 22, 'title_bold': False,
         'h1_font': F_HEI, 'h2_font': F_KAI,
-        'body_font': F_FANG, 'body_size': 16, 'body_line': Pt(28),
+        'body_font': F_FANG, 'body_size': 16, 'body_line': 28,
         'table_size': 12,
-        'margin': (Cm(3.7), Cm(3.5), Cm(2.8), Cm(2.6)),
+        'margin_top': 3.7, 'margin_bottom': 3.5, 'margin_left': 2.8, 'margin_right': 2.6,
     },
     # 法院文书：最高法诉讼文书样式（通用）
     'court': {
         'title_font': F_SONG, 'title_size': 22, 'title_bold': False,
         'h1_font': F_SONG, 'h2_font': F_SONG,
-        'body_font': F_SONG, 'body_size': 14, 'body_line': Pt(25),
+        'body_font': F_SONG, 'body_size': 14, 'body_line': 25,
         'table_size': 10.5,
-        'margin': (Cm(2.54), Cm(2.54), Cm(3.17), Cm(3.17)),
+        'margin_top': 2.54, 'margin_bottom': 2.54, 'margin_left': 3.17, 'margin_right': 3.17,
     },
 }
 DEFAULT_STYLE = 'gongwen'
+
+# 字段单位换算
+PT_FIELDS = {'title_size', 'body_size', 'table_size', 'body_line'}
+BOOL_FIELDS = {'title_bold'}
+MARGIN_FIELDS = {'margin_top', 'margin_bottom', 'margin_left', 'margin_right'}
+
+
+def load_format_spec(path=None):
+    """从 format-spec.md 读取样式覆盖。返回 dict[style_name] -> {param: value}。"""
+    if path is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'format-spec.md')
+    if not os.path.exists(path):
+        return {}
+    overrides = {}
+    cur = None
+    with open(path, encoding='utf-8') as f:
+        for raw in f:
+            line = raw.strip()
+            if line.startswith('## '):
+                cur = line[3:].strip()
+                overrides.setdefault(cur, {})
+                continue
+            # 表格行 | key | value |
+            if cur and line.startswith('|') and line.endswith('|'):
+                cells = [c.strip() for c in line.strip('|').split('|')]
+                if len(cells) >= 2 and cells[0] and cells[0] != '参数':
+                    key, val = cells[0], cells[1]
+                    overrides[cur][key] = val
+            # key: value 行
+            elif cur and ':' in line and not line.startswith(('>', '-', '#')):
+                key, _, val = line.partition(':')
+                overrides[cur][key.strip()] = val.strip()
+    return overrides
+
+
+def resolve_style(style_name, overrides):
+    """合并内置默认与外部覆盖，返回最终样式配置。"""
+    base = dict(STYLES.get(style_name, STYLES[DEFAULT_STYLE]))
+    ov = overrides.get(style_name, {})
+    for k, v in ov.items():
+        if k not in base:
+            continue
+        if k in BOOL_FIELDS:
+            base[k] = str(v).lower() in ('true', '1', 'yes')
+        elif k in PT_FIELDS:
+            base[k] = float(v)
+        elif k in MARGIN_FIELDS:
+            base[k] = float(v)
+        else:
+            base[k] = v
+    return base
+
+
+def apply_style(doc, st):
+    """按样式配置设置文档（页边距、默认字体）。"""
+    sec = doc.sections[0]
+    sec.top_margin = Cm(st['margin_top'])
+    sec.bottom_margin = Cm(st['margin_bottom'])
+    sec.left_margin = Cm(st['margin_left'])
+    sec.right_margin = Cm(st['margin_right'])
+    normal = doc.styles['Normal']
+    normal.font.name = st['body_font']
+    normal._element.rPr.rFonts.set(qn('w:eastAsia'), st['body_font'])
+    normal.font.size = Pt(st['body_size'])
+    return st
+
+
+def st_line(st):
+    """行距（磅）转 Pt。"""
+    return Pt(st['body_line'])
 
 
 def set_font(run, name, size, bold=False):
@@ -75,7 +146,7 @@ def add_para(doc, text, st, align=WD_ALIGN_PARAGRAPH.JUSTIFY, first_line=True,
              font=None, size=None, bold=False, line=None):
     p = doc.add_paragraph()
     p.alignment = align
-    p.paragraph_format.line_spacing = line if line is not None else st['body_line']
+    p.paragraph_format.line_spacing = line if line is not None else st_line(st)
     if first_line:
         p.paragraph_format.first_line_indent = Pt((size or st['body_size']) * 2)
     run = p.add_run(text)
@@ -126,18 +197,13 @@ def parse_table(lines, i):
 
 
 def convert(md_path, docx_path, style_name=DEFAULT_STYLE):
-    st = STYLES[style_name]
+    overrides = load_format_spec()
+    st = resolve_style(style_name, overrides)
     with open(md_path, encoding='utf-8') as f:
         lines = f.read().splitlines()
 
     doc = Document()
-    sec = doc.sections[0]
-    sec.top_margin, sec.bottom_margin, sec.left_margin, sec.right_margin = st['margin']
-
-    normal = doc.styles['Normal']
-    normal.font.name = st['body_font']
-    normal._element.rPr.rFonts.set(qn('w:eastAsia'), st['body_font'])
-    normal.font.size = Pt(st['body_size'])
+    apply_style(doc, st)
 
     i = 0
     while i < len(lines):

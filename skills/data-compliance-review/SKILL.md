@@ -129,3 +129,16 @@ description: 国有企业数据合规审查——依据《数据安全法》《�
 - 需要制度起草（数据安全管理办法、隐私政策）→ /official-document-writing
 - 发现重大数据安全事件 → /compliance-report
 - 涉及合同数据条款 → /contract-review
+
+
+## Word 输出规范（统一）
+
+所有正式 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（GB/T 9704-2012 公文格式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type gongwen
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 脚本支持标记：`#`标题、`##`节标题、`|`表格、`>>`右对齐落款、`-`列表
+- 文件命名：`{文种/事项}_{日期}.docx`

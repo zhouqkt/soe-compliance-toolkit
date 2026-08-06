@@ -66,6 +66,8 @@
 | official-document-writing | 公文写作（GB/T 9704-2012） |
 | litigation-document-writing | 诉讼文书写作（最高法公开样式） |
 | compliance-report | 合规风险报告生成 |
+| compliance-matter-manager | 合规事项管家（台账、整改跟踪、期限提醒、结案归档） |
+| compliance-review | 合规复盘（整改闭环、专项/年度复盘） |
 
 ## 设计原则
 
@@ -84,8 +86,11 @@
 | 法规核验闸门 | legal-verification | 正式文件输出前强制核验法规引用，防"AI 编法条" |
 | 排版参数源 | format-spec.md | 字体/字号/行距/边距外部化，改格式不动代码 |
 | 配置修改 | customize | 单项修改画像/排版配置，无需重跑访谈 |
+| 事项台账 | compliance-matter-manager + matters/ | 审查事项建档、整改跟踪、期限提醒、结案归档（本地JSON零依赖） |
+| 合规复盘 | compliance-review | 整改闭环复盘、专项/年度合规复盘 |
+| 输出模板 | 各技能 references/ | 审查意见书、体检报告、公文速查等模板固化 |
 
-**标准管线**：读取企业画像 → 收集材料 → 审查/起草(md) → 法规核验闸门 → 交付 md → 转 Word
+**标准管线**：读取企业画像 → 收集材料 → 审查/起草(md) → 法规核验闸门 → 交付 md → 转 Word → 事项台账登记 → 整改跟踪 → 复盘
 
 ## 统一排版输出
 

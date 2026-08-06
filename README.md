@@ -15,6 +15,9 @@
 - 贸易真实性核验（四流合一、融资性贸易防范）
 - 合同审查（采购 / 贸易 / 供应链金融）
 - 招标采购合规
+- 境外投资合规
+- 数据合规（数据安全法 / 个人信息保护法 / 数据出境）
+- 劳动用工合规
 - 公文写作（GB/T 9704-2012）
 - 诉讼文书写作（最高人民法院公开样式）
 - 合规风险报告生成
@@ -54,6 +57,9 @@
 | trade-authenticity-check | 贸易真实性核验（四流合一、融资性贸易防范） |
 | contract-review | 国企合同审查（采购 / 贸易 / 供应链金融） |
 | procurement-review | 招标采购合规审查 |
+| overseas-investment-review | 境外投资合规审查（发改委11号令 / 国资委35号令） |
+| data-compliance-review | 数据合规审查（数据安全法 / 个保法 / 数据出境） |
+| labor-compliance-review | 劳动用工合规审查（劳动合同法） |
 | official-document-writing | 公文写作（GB/T 9704-2012） |
 | litigation-document-writing | 诉讼文书写作（最高法公开样式） |
 | compliance-report | 合规风险报告生成 |

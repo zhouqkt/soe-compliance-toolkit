@@ -19,6 +19,9 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
 | 贸易风控 | /trade-authenticity-check | 四流合一核验、融资性贸易与空转贸易识别 |
 | 合同审查 | /contract-review | 采购、贸易、供应链金融合同合规审查 |
 | 采购合规 | /procurement-review | 招标投标法、政府采购法符合性审查 |
+| 境外投资 | /overseas-investment-review | 发改委11号令备案核准、国资委35号令审查 |
+| 数据合规 | /data-compliance-review | 数据安全法、个保法、数据出境合规审查 |
+| 劳动用工 | /labor-compliance-review | 劳动合同法、社保、工时休假、解除终止审查 |
 | 公文写作 | /official-document-writing | 请示、报告、函、纪要等公文起草（GB/T 9704-2012） |
 | 诉讼文书 | /litigation-document-writing | 起诉状、答辩状等诉讼文书起草 |
 | 风险报告 | /compliance-report | 合规风险报告、专项检查报告生成 |
@@ -34,6 +37,9 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
    - 贸易真实性 / 融资性贸易 / 空转贸易 / 四流合一 → /trade-authenticity-check
    - 合同审查 / 合同风险 / 条款审查 → /contract-review
    - 招标 / 采购合规 / 政府采购 → /procurement-review
+   - 境外投资 / 海外投资 / 走出去 / ODI → /overseas-investment-review
+   - 数据合规 / 数据安全 / 个人信息 / 数据出境 / 等保 → /data-compliance-review
+   - 劳动用工 / 劳动合同 / 劳动争议 / 社保 / 解除劳动合同 → /labor-compliance-review
    - 请示 / 报告 / 函 / 会议纪要 / 公文 → /official-document-writing
    - 起诉状 / 答辩状 / 诉讼文书 → /litigation-document-writing
    - 风险报告 / 检查报告 / 整改报告 → /compliance-report

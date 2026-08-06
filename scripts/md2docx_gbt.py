@@ -207,11 +207,31 @@ def convert(md_path, docx_path, style_name=DEFAULT_STYLE):
 
     i = 0
     in_code = False
+    md_dir = os.path.dirname(os.path.abspath(md_path))
     while i < len(lines):
         line = lines[i].rstrip()
         s = line.strip()
 
         if not s or s == '---':
+            i += 1
+            continue
+
+        # 图片 ![alt](path) —— 居中插入，宽度限制在版心内
+        if s.startswith('![') and '](' in s and s.endswith(')'):
+            alt = s[2:s.index('](')]
+            path = s[s.index('](') + 2:-1]
+            full = path if os.path.isabs(path) else os.path.join(md_dir, path)
+            if os.path.exists(full):
+                p = doc.add_paragraph()
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                p.paragraph_format.line_spacing = 1.0
+                run = p.add_run()
+                run.add_picture(full, width=Cm(14.5))
+                add_para(doc, alt, st, WD_ALIGN_PARAGRAPH.CENTER, False,
+                         size=10, font=F_SONG)
+            else:
+                add_para(doc, f'[图片缺失: {alt}（{path}）]', st,
+                         WD_ALIGN_PARAGRAPH.CENTER, False, bold=True)
             i += 1
             continue
 

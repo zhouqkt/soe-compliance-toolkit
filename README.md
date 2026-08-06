@@ -24,9 +24,31 @@
 
 ## 快速开始
 
-### 安装
+### 方式一：一键安装（推荐）
 
-将本仓库 `skills/` 目录下的技能子目录复制（或软链）到你的 Agent 技能目录：
+克隆整个仓库（含根文件与脚本，功能完整）：
+
+```bash
+git clone https://github.com/zhouqkt/soe-compliance-toolkit.git
+cd soe-compliance-toolkit
+bash install.sh
+```
+
+`install.sh` 会自动检测 Hermes / Claude Code / Cursor 并注册全部技能。
+
+网络受限时：下载仓库 zip 解压后运行 `bash install.sh --skills-only`。
+
+### 方式二：Hermes skills install（单技能）
+
+```bash
+hermes skills install https://raw.githubusercontent.com/zhouqkt/soe-compliance-toolkit/main/skills/compliance-hub/SKILL.md
+```
+
+> 注意：仅安装技能不包含根文件（Expert.md / format-spec.md / scripts/），统一排版与共享护栏功能不完整，建议用方式一。
+
+### 方式三：手动复制
+
+将仓库 `skills/` 下的技能目录复制（或软链）到你的 Agent 技能目录：
 
 - Hermes：`~/.hermes/profiles/<profile>/skills/`
 - Claude Code：`~/.claude/skills/`
@@ -43,7 +65,7 @@
 
 ### 冷启动
 
-首次使用建议先运行 `compliance-hub`（合规中枢）完成基础配置（企业性质、所属层级、业务板块等），以获得更精准的审查建议。
+首次使用请运行 `compliance-hub`（合规中枢）或直接说"配置企业画像"，按提示完成企业画像配置。
 
 ## 技能清单
 

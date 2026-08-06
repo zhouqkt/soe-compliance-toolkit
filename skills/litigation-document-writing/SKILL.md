@@ -136,3 +136,16 @@ description: 国有企业诉讼文书写作——依据最高人民法院公开�
 
 - 涉及案件事实梳理 → 建议先人工整理案情时间线
 - 需要证据材料 → /contract-review（审查合同证据）等
+
+
+## Word 输出规范（统一）
+
+所有诉讼文书 Word 文件统一使用套件脚本 `scripts/md2docx_gbt.py` 生成（最高法诉讼文书样式）：
+
+```bash
+python3 scripts/md2docx_gbt.py input.md output.docx --type court
+```
+
+- 先输出 Markdown 供确认，确认后转 Word
+- 标题宋体二号居中不加粗；正文宋体四号首行缩进2字符；行距固定25磅
+- 禁止在文中使用 HTML 标签（排版由脚本控制）

@@ -22,6 +22,9 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
 | **配置** | /enterprise-onboarding | 企业画像冷启动访谈（写入 enterprise-profile.md） |
 | **配置** | /customize | 单项修改配置（画像/排版参数） |
 | **质控** | /legal-verification | 正式文件输出前法规核验闸门 |
+| **质控** | /document-formatting | 转 Word 前排版校验闸门 |
+| **输入** | /document-parse | PDF/扫描件/图片解析为 Markdown |
+| **知识** | /compliance-knowledge-base | 合规知识库（法规库/审查案例/工作笔记） |
 | **事项管理** | /compliance-matter-manager | 审查事项台账、整改跟踪、期限提醒、结案归档 |
 | **复盘** | /compliance-review | 整改闭环复盘、专项/年度合规复盘 |
 | 合规体系 | /rule-46-review | 依据国资委令第46号开展合规管理体系符合性审查 |
@@ -60,6 +63,9 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
    - 核验法规 / 核验引用 / 核验法条 → /legal-verification
    - 事项台账 / 建档 / 整改跟踪 / 待办 / 期限 / 结案 → /compliance-matter-manager
    - 复盘 / 整改复查 / 复检 / 年度合规总结 / 回头看 → /compliance-review
+   - 解析文档 / PDF转文本 / 提取内容 / 扫描件 → /document-parse
+   - 排版校验 / 格式检查 / 检查格式 → /document-formatting
+   - 知识库 / 沉淀 / 检索法规 / 查案例 / 保存经验 → /compliance-knowledge-base
 3. 需求不明确 → 询问企业性质（央企/地方国企/金融国企）、所属层级、业务板块、审查对象
 
 ## 合规管理体检清单（46号令视角）

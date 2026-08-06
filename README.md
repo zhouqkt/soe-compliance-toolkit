@@ -68,6 +68,9 @@
 | compliance-report | 合规风险报告生成 |
 | compliance-matter-manager | 合规事项管家（台账、整改跟踪、期限提醒、结案归档） |
 | compliance-review | 合规复盘（整改闭环、专项/年度复盘） |
+| document-parse | 文档解析（PDF/扫描件/图片 → Markdown） |
+| document-formatting | 排版校验（转 Word 前格式合规校验） |
+| compliance-knowledge-base | 合规知识库（法规库/审查案例/工作笔记） |
 
 ## 设计原则
 

@@ -27,6 +27,8 @@
     "./skills/labor-compliance-review",
     "./skills/official-document-writing",
     "./skills/litigation-document-writing",
-    "./skills/compliance-report"
+    "./skills/compliance-report",
+    "./skills/compliance-matter-manager",
+    "./skills/compliance-review"
   ]
 }

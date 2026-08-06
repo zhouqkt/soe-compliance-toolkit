@@ -22,6 +22,8 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
 | **配置** | /enterprise-onboarding | 企业画像冷启动访谈（写入 enterprise-profile.md） |
 | **配置** | /customize | 单项修改配置（画像/排版参数） |
 | **质控** | /legal-verification | 正式文件输出前法规核验闸门 |
+| **事项管理** | /compliance-matter-manager | 审查事项台账、整改跟踪、期限提醒、结案归档 |
+| **复盘** | /compliance-review | 整改闭环复盘、专项/年度合规复盘 |
 | 合规体系 | /rule-46-review | 依据国资委令第46号开展合规管理体系符合性审查 |
 | 决策合规 | /triple-major-review | "三重一大"事项识别与决策程序审查 |
 | 国资交易 | /asset-transaction-review | 依据国资委令第32号审查国有资产交易 |
@@ -56,6 +58,8 @@ description: 国有企业法务合规工具箱入口——识别用户合规需�
    - 配置 / 重新配置 / 初始化 / 企业画像 → /enterprise-onboarding
    - 修改配置 / 改参数 / 改排版 → /customize
    - 核验法规 / 核验引用 / 核验法条 → /legal-verification
+   - 事项台账 / 建档 / 整改跟踪 / 待办 / 期限 / 结案 → /compliance-matter-manager
+   - 复盘 / 整改复查 / 复检 / 年度合规总结 / 回头看 → /compliance-review
 3. 需求不明确 → 询问企业性质（央企/地方国企/金融国企）、所属层级、业务板块、审查对象
 
 ## 合规管理体检清单（46号令视角）

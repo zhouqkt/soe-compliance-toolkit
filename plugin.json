@@ -11,6 +11,9 @@
   "tags": ["国企", "合规", "法务", "compliance", "SOE", "国资监管", "三重一大", "贸易真实性", "公文写作"],
   "license": "MIT",
   "skills": [
+    "./skills/enterprise-onboarding",
+    "./skills/customize",
+    "./skills/legal-verification",
     "./skills/compliance-hub",
     "./skills/rule-46-review",
     "./skills/triple-major-review",

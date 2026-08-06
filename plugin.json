@@ -1,0 +1,26 @@
+{
+  "name": "soe-compliance-toolkit",
+  "displayName": "国有企业法务合规工具箱",
+  "version": "0.1.0",
+  "description": "面向国有企业法务合规工作的技能包：46号令合规审查、三重一大、国资交易32号令、关联交易、贸易真实性核验、合同审查、招标采购、公文写作、诉讼文书、合规报告。",
+  "descriptionZh": "面向国有企业法务合规工作的开源技能包，覆盖国资监管合规审查全流程。",
+  "author": {
+    "name": "SOE Compliance Toolkit Contributors"
+  },
+  "category": "legal-compliance",
+  "tags": ["国企", "合规", "法务", "compliance", "SOE", "国资监管", "三重一大", "贸易真实性", "公文写作"],
+  "license": "MIT",
+  "skills": [
+    "./skills/compliance-hub",
+    "./skills/rule-46-review",
+    "./skills/triple-major-review",
+    "./skills/asset-transaction-review",
+    "./skills/related-party-review",
+    "./skills/trade-authenticity-check",
+    "./skills/contract-review",
+    "./skills/procurement-review",
+    "./skills/official-document-writing",
+    "./skills/litigation-document-writing",
+    "./skills/compliance-report"
+  ]
+}
